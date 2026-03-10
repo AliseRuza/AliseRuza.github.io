@@ -108,11 +108,8 @@
       letter-spacing: -0.03em;
       color: var(--text);
       margin-bottom: 20px;
-    }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--text-muted);
+      font-style: normal;
+      white-space: nowrap;
     }
 
     .hero-bio {
@@ -175,6 +172,10 @@
       overflow: hidden;
       border: 3px solid var(--border);
       flex-shrink: 0;
+    }
+
+    .avatar-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
     }
 
     /* ── DIVIDER ── */
@@ -285,36 +286,6 @@
       border-radius: 100px;
     }
 
-    /* ── STATS ROW ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-    }
-
-    .stat-number {
-      font-family: 'Instrument Serif', serif;
-      font-size: 36px;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
     /* ── EXPERIENCE ── */
     .experience-list {
       display: flex; flex-direction: column; gap: 2px;
@@ -365,7 +336,7 @@
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
@@ -474,15 +445,15 @@
     .delay-1 { animation-delay: 0.08s; }
     .delay-2 { animation-delay: 0.16s; }
     .delay-3 { animation-delay: 0.24s; }
-    .delay-4 { animation-delay: 0.32s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
       .container { padding: 0 20px; }
       .hero-inner { grid-template-columns: 1fr; }
+      .hero-name { white-space: normal; }
       .avatar-wrap { order: -1; width: 96px; height: 96px; }
-      .skills-grid, .contact-grid, .stats-row { grid-template-columns: 1fr; }
+      .skills-grid, .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
   </style>
@@ -506,9 +477,9 @@
       <div class="hero-inner fade-up">
         <div>
           <p class="hero-eyebrow">Research Master in Economics · Tilburg University</p>
-          <h1 class="hero-name">Alise Ruža<br/><em>& Research</em></h1>
+          <h1 class="hero-name">Alise Ruža</h1>
           <p class="hero-bio">
-            I am a Research Master student in Economics at Tilburg University, interested in development economics, gender equality, education, and causal inference.
+            I am a Research Master student in Economics at Tilburg University, interested in development economics, humanitarian policy, and causal inference. My current research studies the comparative effects of the Graduation Approach and cash transfers on nutrition outcomes among refugees in Uganda.
           </p>
           <div class="hero-tags">
             <span class="tag">Development Economics</span>
@@ -526,7 +497,7 @@
           </div>
         </div>
         <div class="avatar-wrap">
-          <img src="IMG_7948.jpg" style="width:100%;height:100%;object-fit:cover;" />
+          <img src="IMG_7948.jpg" alt="Alise Ruža" />
         </div>
       </div>
     </div>
@@ -537,21 +508,18 @@
   <!-- RESEARCH -->
   <section id="research">
     <div class="container">
-
-      <div class="section-header fade-up delay-1">
+      <div class="section-header fade-up">
         <h2 class="section-title">Research</h2>
       </div>
 
-      <div class="research-list fade-up delay-3">
+      <div class="research-list fade-up delay-1">
 
-        <a href="https://www.socialscienceregistry.org/trials/12719" target="_blank" class="research-card">
+        <a href="https://www.socialscienceregistry.org/trials/12719" target="_blank" class="research-card" style="border-radius: var(--radius)">
           <div class="card-row">
             <div>
               <div class="card-title">Graduation Approach vs. Cash Transfers Among Refugees in Uganda</div>
               <div class="card-meta">with Till Wicker · AEARCTR-0012719</div>
-              <div class="card-abstract">
-                RCT examining the comparative effects of the Graduation Approach and short-term cash assistance on nutrition outcomes among refugees in Uganda. Funding secured, endline scheduled for Fall 2026.
-              </div>
+              <div class="card-abstract">RCT examining the comparative effects of the Graduation Approach and short-term cash assistance on nutrition outcomes among refugees in Uganda. Funding secured, endline scheduled for Fall 2026.</div>
             </div>
             <span class="card-status status-progress">
               <span class="status-dot"></span> RCT Ongoing
@@ -566,45 +534,7 @@
           </div>
         </a>
 
-        <div class="research-card">
-          <div class="card-row">
-            <div>
-              <div class="card-title">From Money in Hand to Food on the Plate</div>
-              <div class="card-meta">BSc Thesis · Tilburg University · 2025</div>
-              <div class="card-abstract">
-                Comparing the effects of short-term cash assistance and the Graduation Approach on nutrition outcomes among refugees in Uganda. Awarded a grade of 9.5/10.
-              </div>
-            </div>
-            <span class="card-status status-working">
-              <span class="status-dot"></span> Thesis
-            </span>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Nutrition</span>
-            <span class="card-tag">Humanitarian Aid</span>
-            <span class="card-tag">Uganda</span>
-          </div>
-        </div>
 
-        <div class="research-card">
-          <div class="card-row">
-            <div>
-              <div class="card-title">Cognition and Innovation in the Electric Vehicle Industry</div>
-              <div class="card-meta">with Dr. Anindya Ghosh & Dr. Shivaram Devarakonda · CentER Honors · 2024</div>
-              <div class="card-abstract">
-                Research assistance including literature reviews, data gathering, and summary statistics using Python.
-              </div>
-            </div>
-            <span class="card-status status-working">
-              <span class="status-dot"></span> RA Project
-            </span>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Innovation</span>
-            <span class="card-tag">Electric Vehicles</span>
-            <span class="card-tag">Python</span>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -697,13 +627,11 @@
           <div class="skill-label">Languages</div>
           <div class="skill-tags">
             <span class="skill-tag">Latvian — Native</span>
-            <span class="skill-tag">English — Fluent (IELTS 8.0)</span>
+            <span class="skill-tag">English — Fluent</span>
             <span class="skill-tag">Russian — Intermediate</span>
             <span class="skill-tag">Dutch — Basic</span>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
@@ -719,23 +647,23 @@
 
       <div class="contact-grid fade-up delay-1">
 
-        <a href="/cdn-cgi/l/email-protection#6f0e411d1a150e2f1b06030d1a1d081a0106190a1d1c061b16410a0b1a" class="contact-card">
+        <a href="mailto:a.ruza@tilburguniversity.edu" class="contact-card">
           <div class="contact-icon">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#6B6760" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <div>
             <div class="contact-label">University Email</div>
-            <div class="contact-value"><span class="__cf_email__" data-cfemail="bcdd92cec9c6ddfcc8d5d0dec9cedbc9d2d5cad9cecfd5c8c592d9d8c9">[email&#160;protected]</span></div>
+            <div class="contact-value">a.ruza@tilburguniversity.edu</div>
           </div>
         </a>
 
-        <a href="/cdn-cgi/l/email-protection#096865607a6c7b7c27687b68496e64686065276a6664" class="contact-card">
+        <a href="mailto:aliseru.ara@gmail.com" class="contact-card">
           <div class="contact-icon">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#6B6760" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <div>
             <div class="contact-label">Personal Email</div>
-            <div class="contact-value"><span class="__cf_email__" data-cfemail="ec8d80859f899e99c28d9e8dac8b818d8580c28f8381">[email&#160;protected]</span></div>
+            <div class="contact-value">aliseru.ara@gmail.com</div>
           </div>
         </a>
 
@@ -773,9 +701,25 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.style.opacity = '1';
-          e.target.style.transfor
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      if (!el.style.animationDelay) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+      }
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
