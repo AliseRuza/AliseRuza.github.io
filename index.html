@@ -34,6 +34,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -480,7 +481,6 @@
         <div>
           <p class="hero-eyebrow">Trying to make the world a little better than I found it.</p>
           <h1 class="hero-name">Alise Ruža</h1>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
           <p class="hero-bio">
             I am a Research Master student in Economics at Tilburg University, interested in development economics, gender equality, humanitarian policy, and causal inference. Enthusiastic about youth work, facilitation and combining formal and non-formal education methods to enhance learning for everybody.
           </p>
@@ -704,40 +704,38 @@
   </footer>
 
   <script>
-  // 🕵️ Console easter egg
-  console.log('%c👋 Hi there, you found the secret.', 'font-size: 16px; font-weight: bold; color: #2563EB;');
-  console.log('%c   Clearly you know what you\'re doing.', 'font-size: 14px; color: #6B6760;');
-  console.log('%c   Let\'s collaborate → a.ruza@tilburguniversity.edu', 'font-size: 14px; color: #6B6760;');
+    console.log('%c👋 Hi there, you found the secret.', 'font-size: 16px; font-weight: bold; color: #2563EB;');
+    console.log('%c   Clearly you know what you\'re doing.', 'font-size: 14px; color: #6B6760;');
+    console.log('%c   Let\'s collaborate → a.ruza@tilburguniversity.edu', 'font-size: 14px; color: #6B6760;');
 
-  // 🌀 ž → z easter egg on name hover
-  const logo = document.querySelector('.nav-logo');
-  logo.addEventListener('mouseenter', () => {
-    logo.innerHTML = 'Alise Ruza';
-    logo.style.transition = 'all 0.2s';
-  });
-  logo.addEventListener('mouseleave', () => {
-    logo.innerHTML = 'Alise Ruža';
-  });
-
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        e.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      }
+    // ž → z easter egg on name hover
+    const logo = document.querySelector('.nav-logo');
+    logo.addEventListener('mouseenter', () => {
+      logo.innerHTML = 'Alise Ruza';
     });
-  }, { threshold: 0.1 });
+    logo.addEventListener('mouseleave', () => {
+      logo.innerHTML = 'Alise Ruža';
+    });
 
-  document.querySelectorAll('.fade-up').forEach(el => {
-    if (!el.style.animationDelay) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(16px)';
-    }
-    observer.observe(el);
-  });
-</script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      if (!el.style.animationDelay) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+      }
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
