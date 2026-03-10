@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Things I Find Interesting · Alise Ruža</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F6F3;
+      --surface: #FFFFFF;
+      --border: #E8E5DF;
+      --border-strong: #D4CFCA;
+      --text: #1A1916;
+      --text-muted: #6B6760;
+      --text-light: #9E9A95;
+      --accent: #2563EB;
+      --tag-bg: #F0EDE8;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247, 246, 243, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      padding-top: 120px;
+      padding-bottom: 48px;
+    }
+
+    .page-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .page-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .page-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 480px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: var(--border); margin: 0; }
+
+    /* ── LIST ── */
+    .rec-list {
+      padding: 16px 0 80px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rec-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.15s;
+    }
+
+    .rec-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .rec-item:hover .rec-title {
+      color: var(--accent);
+    }
+
+    .rec-item:hover .rec-arrow {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    .rec-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .rec-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.15s;
+      letter-spacing: -0.01em;
+    }
+
+    .rec-source {
+      font-size: 12.5px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .rec-type {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .type-podcast  { background: #F3E8FF; color: #6B21A8; }
+    .type-article  { background: #E0F2FE; color: #075985; }
+    .type-book     { background: #FEF9C3; color: #854D0E; }
+    .type-org      { background: #DCFCE7; color: #166534; }
+    .type-other    { background: var(--tag-bg); color: var(--text-muted); }
+
+    .rec-arrow {
+      font-size: 16px;
+      color: var(--text-light);
+      flex-shrink: 0;
+      transition: transform 0.2s, opacity 0.2s;
+      opacity: 0.4;
+      align-self: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .footer-text { font-size: 12.5px; color: var(--text-light); }
+
+    /* ── FADE ── */
+    .fade-up { opacity: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Alise Ruža</a>
+    <ul class="nav-links">
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="interests.html" class="active">Interests</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="container">
+    <div class="page-header fade-up">
+      <p class="page-eyebrow">Reading list</p>
+      <h1 class="page-title">Things I find interesting</h1>
+      <p class="page-desc"> in case you're curious </p>
+    </div>
+  </div>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- LIST -->
+  <div class="container">
+    <div class="rec-list fade-up">
+
+      <a href="https://www.economist.com/by-invitation/2026/03/06/what-people-get-wrong-about-womens-rights" target="_blank" class="rec-item">
+        <div class="rec-left">
+          <span class="rec-title">What people get wrong about women's rights</span>
+          <span class="rec-source">The Economist · By Invitation</span>
+        </div>
+        <span class="rec-type type-article">Article</span>
+        <span class="rec-arrow">→</span>
+      </a>
+
+      <a href="https://voxdev.org/voxdevlit/podcasts" target="_blank" class="rec-item">
+        <div class="rec-left">
+          <span class="rec-title">VoxDev Podcast</span>
+          <span class="rec-source">VoxDev · Development Economics</span>
+        </div>
+        <span class="rec-type type-podcast">Podcast</span>
+        <span class="rec-arrow">→</span>
+      </a>
+
+      <a href="https://www.ea-netherlands.org" target="_blank" class="rec-item">
+        <div class="rec-left">
+          <span class="rec-title">EA Netherlands</span>
+          <span class="rec-source">Effective Altruism · Netherlands</span>
+        </div>
+        <span class="rec-type type-org">Organisation</span>
+        <span class="rec-arrow">→</span>
+      </a>
+
+      <div class="rec-item" style="cursor: default;">
+        <div class="rec-left">
+          <span class="rec-title">The Streets of Gold</span>
+          <span class="rec-source">Ran Abramitzky & Leah Boustan · Book</span>
+        </div>
+        <span class="rec-type type-book">Book</span>
+        <span class="rec-arrow" style="opacity: 0;">→</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-text">© 2026 Alise Ruža</span>
+        <span class="footer-text"><a href="index.html" style="color: var(--text-light); text-decoration: none;">← Back to main</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transition = 'opacity 0.6s ease';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
