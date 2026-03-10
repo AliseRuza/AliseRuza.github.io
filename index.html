@@ -704,25 +704,6 @@
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-          e.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-up').forEach(el => {
-      if (!el.style.animationDelay) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(16px)';
-      }
-      observer.observe(el);
-    });
-  </script>
-  <script>
   // 🕵️ Console easter egg
   console.log('%c👋 Hi there, you found the secret.', 'font-size: 16px; font-weight: bold; color: #2563EB;');
   console.log('%c   Clearly you know what you\'re doing.', 'font-size: 14px; color: #6B6760;');
