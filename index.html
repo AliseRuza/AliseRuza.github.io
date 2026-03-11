@@ -357,7 +357,8 @@
       .hero-name { white-space: normal; }
       .avatar-wrap { order: -1; width: 96px; height: 96px; }
       .skills-grid, .contact-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+      .nav-links { display: flex;gap: 16px;}
+      .nav-links li:not(:last-child) { display: none; }
     }
   </style>
 </head>
